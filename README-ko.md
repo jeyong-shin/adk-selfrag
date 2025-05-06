@@ -45,7 +45,7 @@ ADK-SELFRAG/
 
 1. 리포지토리 복제:
    ```bash
-   git clone https://github.com/yourusername/adk-selfrag.git
+   git clone https://github.com/jeyong-shin/adk-selfrag.git
    cd adk-selfrag
    ```
 
