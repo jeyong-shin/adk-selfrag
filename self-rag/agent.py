@@ -96,11 +96,3 @@ root_agent = SelfRagAgent(
     relevence_checker=relevance_check,
     output_key="self_rag_result",
 )
-
-
-# root_agent = Agent(
-#     name="root_agent",
-#     model="gemini-2.0-flash",
-#     instruction="You are a helpful assistant that performs self-retrieval-augmented generation.",
-#     sub_agents=[self_rag_agent],
-# )

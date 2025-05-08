@@ -1,7 +1,8 @@
+import time
 from typing import AsyncGenerator, override
 from venv import logger
 from google.adk.agents import BaseAgent, LlmAgent, SequentialAgent
-from google.adk.events import Event
+from google.adk.events import Event, EventActions
 
 from logging import getLogger
 
@@ -119,4 +120,13 @@ class SelfRagAgent(BaseAgent):
         else:
             logger.info(f"[{self.name}] Max retry reached, stopping agent")
 
-        ctx.session.state[self.output_key] = ctx.session.state.get("generate_result")
+        yield Event(
+            invocation_id="self_rag_finished",
+            author="agent",
+            actions=EventActions(
+                state_delta={
+                    self.output_key: ctx.session.state.get("generate_result")
+                }
+            ),
+            timestamp = time.time()
+        )
